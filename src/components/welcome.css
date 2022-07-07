@@ -9,13 +9,11 @@
 }
 
 .welcome > h1 {
-  
-  
   font-size: 144px;
   left: 46px;
   top: 15px;
   position: absolute;
-  color: white;
+  color: burlywood;
 }
 
 .login-register-container {

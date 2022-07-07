@@ -10,6 +10,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyDCVlAUnGB4rIbSDMwqykRxzpO5xFCxIsM",
   authDomain: "todo-app-b699c.firebaseapp.com",
+  databaseURL: "https://todo-app-b699c-default-rtdb.firebaseio.com",
   projectId: "todo-app-b699c",
   storageBucket: "todo-app-b699c.appspot.com",
   messagingSenderId: "963849009971",

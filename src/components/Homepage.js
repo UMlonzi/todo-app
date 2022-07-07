@@ -17,6 +17,7 @@ export default function Homepage() {
   const [isEdit, setIsEdit] = useState(false);
   const [tempUidd, setTempUidd] = useState("");
   const navigate = useNavigate();
+const [date, setDate] = useState(Date(new Date));
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -52,7 +53,8 @@ export default function Homepage() {
     const uidd = uid();
     set(ref(db, `/${auth.currentUser.uid}/${uidd}`), {
       todo: todo,
-      uidd: uidd
+      uidd: uidd,
+      date: date
     });
 
     setTodo("");
@@ -63,16 +65,18 @@ export default function Homepage() {
     setIsEdit(true);
     setTodo(todo.todo);
     setTempUidd(todo.uidd);
+    setDate(todo.date);
   };
 
   const handleEditConfirm = () => {
     update(ref(db, `/${auth.currentUser.uid}/${tempUidd}`), {
       todo: todo,
-      tempUidd: tempUidd
+      tempUidd: tempUidd,
+      date: date
     });
-
     setTodo("");
     setIsEdit(false);
+    setDate(todo.date);
   };
 
   // delete
@@ -92,7 +96,7 @@ export default function Homepage() {
 
       {todos.map((todo) => (
         <div className="todo">
-          <h1>{todo.todo}</h1>
+          <h1>{todo.todo}<br></br>{todo.date}</h1>
           <EditIcon
             fontSize="large"
             onClick={() => handleUpdate(todo)}
